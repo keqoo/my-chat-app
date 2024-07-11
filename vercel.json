@@ -1,18 +1,15 @@
 {
-  "version": 2,
-  "builds": [
-    {
-      "src": "public/**/*",
-      "use": "@vercel/static-build"
-    }
-  ],
-  "routes": [
-    {
-      "src": "/(.*)",
-      "dest": "public/index.html"
-    }
-  ],
-  "env": {
-    "NODE_ENV": "production"
-  }
+   "version": 2,
+   "builds": [
+     {
+       "src": "build.sh",
+       "use": "@vercel/sh"
+     }
+   ],
+   "routes": [
+     {
+       "src": "/(.*)",
+       "dest": "public/index.html"
+     }
+   ]
 }
