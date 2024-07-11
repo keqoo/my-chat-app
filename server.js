@@ -17,7 +17,10 @@ app.post('/api/chat', async (req, res) => {
         "Content-Type": "application/json"
     };
     const payload = {
-        // ...你的payload内容
+        "model": "text-davinci-002",
+        "messages": [
+            { "role": "user", "content": text }
+        ]
     };
 
     try {
