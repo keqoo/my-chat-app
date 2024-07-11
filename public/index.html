@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI助手</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .header {
+            text-align: center;
+            padding: 20px 0;
+        }
+        .chatbox {
+            height: 400px;
+            margin-bottom: 20px;
+            padding: 10px;
+            background-color: #f9f9f9;
+            overflow-y: auto;
+            border: 1px solid #ddd;
+        }
+        .message {
+            margin-bottom: 10px;
+            padding: 10px;
+            border-radius: 5px;
+            background-color: #e9e9e9;
+        }
+        .user-message {
+            background-color: #a8dadc;
+            margin-left: auto;
+        }
+        .input-group {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+        input[type="text"] {
+            flex-grow: 1;
+            padding: 10px;
+            margin-right: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            background-color: #1d3557;
+            color: white;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #457b9d;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>AI助手</h1>
+        </div>
+        <div class="chatbox" id="chatbox">
+            <!-- 聊天内容将在这里显示 -->
+        </div>
+        <div class="input-group">
+            <input type="text" id="userInput" placeholder="输入消息...">
+            <button onclick="sendMessage()">发送</button>
+        </div>
+    </div>
+
+    <script>
+        // JavaScript代码将在这里
+        const chatbox = document.getElementById('chatbox');
+        const userInput = document.getElementById('userInput');
+
+        async function sendMessage() {
+            const userText = userInput.value.trim();
+            if (userText) {
+                displayMessage(userText, 'user-message');
+                userInput.value = '';
+                
+                // 这里应该调用后端API，而不是直接暴露API密钥
+                // 例如使用fetch API发送请求到你的后端服务
+                // fetch('/api/chat', {
+                //      method: 'POST',
+                //      headers: {
+                //          'Content-Type': 'application/json'
+                //      },
+                //      body: JSON.stringify({ text: userText })
+                // })
+                // .then(response => response.json())
+                // .then(data => {
+                //      displayMessage(data.message, 'bot-message');
+                // });
+            }
+        }
+
+        function displayMessage(text, className) {
+            const messageDiv = document.createElement('div');
+            messageDiv.classList.add('message', className);
+            messageDiv.textContent = text;
+            chatbox.appendChild(messageDiv);
+            chatbox.scrollTop = chatbox.scrollHeight;
+        }
+    </script>
+</body>
+</html>
