@@ -4,12 +4,13 @@ module.exports = async (req, res) => {
     const { text } = req.body;
     console.log('Received text:', text);
 
-    // Assuming api_key and groupId are defined somewhere in your environment or constants
-    const api_key = 'your_api_key_here';
-    const groupId = 'your_groupId_here';
+    const groupId = 'your_groupId_here'; // Replace with your groupId
 
     const url = `https://api.minimax.chat/v1/text/chatcompletion_pro?GroupId=${groupId}`;
-    const headers = {"Authorization": `Bearer ${api_key}`, "Content-Type": "application/json"};
+    const headers = {
+        "Authorization": `Bearer ${process.env.API_KEY}`, // Access API_KEY from environment variables
+        "Content-Type": "application/json"
+    };
 
     const payload = {
         "model": "text-davinci-002",
