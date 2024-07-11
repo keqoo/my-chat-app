@@ -4,11 +4,10 @@ module.exports = async (req, res) => {
     const { text } = req.body;
     console.log('Received text:', text);
 
-    const url = `https://api.minimax.chat/v1/text/chatcompletion_pro?GroupId=${process.env.GROUP_ID}`;
-    const headers = {
-        "Authorization": `Bearer ${process.env.API_KEY}`,
-        "Content-Type": "application/json"
-    };
+   app.post('/api/chat', async (req, res) => {
+    const { text } = req.body;
+    const url = `https://api.minimax.chat/v1/text/chatcompletion_pro?GroupId=${groupId}`;
+    const headers = {"Authorization":f"Bearer {api_key}", "Content-Type":"application/json"};
     const payload = {
         "model": "text-davinci-002",
         "messages": [
