@@ -91,19 +91,21 @@
                 displayMessage(userText, 'user-message');
                 userInput.value = '';
                 
-                // 这里应该调用后端API，而不是直接暴露API密钥
-                // 例如使用fetch API发送请求到你的后端服务
-                // fetch('/api/chat', {
-                //      method: 'POST',
-                //      headers: {
-                //          'Content-Type': 'application/json'
-                //      },
-                //      body: JSON.stringify({ text: userText })
-                // })
-                // .then(response => response.json())
-                // .then(data => {
-                //      displayMessage(data.message, 'bot-message');
-                // });
+               // 调用后端API
+                try {
+                    const response = await fetch('/api/chat', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({ text: userText })
+                    });
+                    const data = await response.json();
+                    displayMessage(data.reply, 'bot-message');
+                } catch (error) {
+                    console.error('Error:', error);
+                    displayMessage('抱歉，现在无法回复。', 'bot-message');
+                }
             }
         }
 
