@@ -12,10 +12,7 @@ app.use(express.json());
 app.post('/api/chat', async (req, res) => {
     const { text } = req.body;
     const url = `https://api.minimax.chat/v1/text/chatcompletion_pro?GroupId=${groupId}`;
-    const headers = {
-        "Authorization": `Bearer ${apiKey}`,
-        "Content-Type": "application/json"
-    };
+    const headers = {"Authorization":f"Bearer {api_key}", "Content-Type":"application/json"};
     const payload = {
         "model": "text-davinci-002",
         "messages": [
