@@ -91,7 +91,7 @@
                 displayMessage(userText, 'user-message');
                 userInput.value = '';
                 
-               // 调用后端API
+                // 调用后端API
                 try {
                     const response = await fetch('/api/chat', {
                         method: 'POST',
